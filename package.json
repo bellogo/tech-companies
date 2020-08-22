@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "my first personal node server",
   "main": "server.js",
-  "type": "module",
+  
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "babel-node server.js",
