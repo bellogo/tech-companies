@@ -1,6 +1,6 @@
 import express from 'express';
-import pool from './db.js';
-import Company from './controllers/company.js';
+// import pool from './db.js';
+import Company from './src/controllers/company.js';
 
 
 // import bodyParser from 'body-parser';
