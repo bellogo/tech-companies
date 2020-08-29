@@ -11,7 +11,7 @@ app.use(express.json());
 
 app.get('/', (req, res) => {
   return res.status(200).send({
-    'message': 'YAY! Congratulations! Your first endpoint is working'
+    'message': 'Welcome to Tech-companies'
   });
 });
 
@@ -24,3 +24,5 @@ app.delete('/company/:id', Company.delete);
 const port = process.env.PORT || 3000;
 app.listen(port);
 console.log(`app running on port , ${port}`);
+
+module.exports = app;
