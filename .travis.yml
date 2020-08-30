@@ -2,29 +2,27 @@ language: node_js
 node_js:
   - "stable"
 
-  services:
-    -
-# env:
-#   global:
-#   # Code Climate Reporter gotten from code climate
-#     - CC_TEST_REPORTER_ID=da1fee3ce1508e9ff73dc6a7481d5ec48a7978765427e1bb05eb4ee46d35af857
+language: node_js
+node_js:
+  - "10"
 
-
-# before_script:
-#   - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
-#   - chmod +x ./cc-test-reporter
-#   - ./cc-test-reporter before-build
-
-script:  
+install:
   - npm install
+cache:
+  directories:
+    - "node_modules"
+
+services:
+  - postgresql
+
+before_script:
+  # - psql -c 'DROP DATABASE IF EXISTS test;' -U postgres
+  - psql -c 'CREATE DATABASE test;' -U postgres
+
+script:
+  - npm run lint
   - npm run test
 
-# after_script:  
-#   - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
+after_success:
+  - nyc report --reporter=text-lcov | coveralls
 
-# after_success:
-#   - npm run coverage
-#   - npm run coveralls
-
-# notifications:
-#   email: false
