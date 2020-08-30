@@ -1,36 +1,55 @@
-# Wallace
-Ballance tracking for your wallet.
+[![Build Status](https://travis-ci.org/bellogo/tech-companies.svg?branch=develop)](https://travis-ci.org/bellogo/tech-companies)
 
+# Tech Companies
 
-Wallace provides a way to make more informed financial decisions, by tracking your balance, through your income & expenditure. The balance from each account is visualized on a chart to help the user see their spending and earning history.
+Tech companies is a node js app that lists information about tech companies in nigeria. CRUD methods have been created to do the following:
+
+- Get all companies
+- Add a company 
+- Get one company
+- Edit company details
+- Delete a company
+
 
 ## Built With
 
-- Javscript, webpack 
-- Sass.
+- vanila Javscript,
+- NodeJs with express,
+- postgreSQL.
 
 ## Live Demo
 
-[Live Demo Link](https://wallacev2.netlify.app/)
+[Live Demo Link](https://companies-ng.herokuapp.com/)
 
+### Usage
+1. Add company: POST: https://companies-ng.herokuapp.com/companies
 
-## Getting Started
+{\
+    name: "Aladin's hub",\
+    location: "Wadiya",\
+    ceo: "Admiral General Aladin"\
+}
 
-To get a local copy up and running follow these simple example steps.
+2. Get all companies: GET: https://companies-ng.herokuapp.com/companies
+
+3. Get one company: GET: https://companies-ng.herokuapp.com/company/:id
+
+4. Update company: PUT:  https://companies-ng.herokuapp.com/company/:id
+
+5. Delete single companies: DELETE:  https://companies-ng.herokuapp.com/company/:id
 
 ### Prerequisites
 
-To run this project, you will need to have `npm` already installed locally
+- To run this project locally, you will need to have `npm` already installed locally
+- run `npm install` to install all the dependencies of the project
+- A browser Installed
+- A REST API client(like POSTMAN) Installed
+- An Internet connection to download the dependencies.
 
-### Setup
-`Clone the project and cd into the directory`
+## Tested With
 
-### Install
-run `npm install` to install all the dependencies of the project
-
-### Usage
-run  `npm run server` to get the project running
-
+- Mocha
+- Chai
 
 ## Authors
 
