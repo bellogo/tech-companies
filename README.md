@@ -1,5 +1,7 @@
 [![Build Status](https://travis-ci.org/bellogo/tech-companies.svg?branch=develop)](https://travis-ci.org/bellogo/tech-companies)
 
+[![Coverage Status](https://coveralls.io/repos/github/bellogo/tech-companies/badge.svg?branch=develop)](https://coveralls.io/github/bellogo/tech-companies?branch=develop)
+
 # Tech Companies
 
 Tech companies is a node js app that lists information about tech companies in nigeria. CRUD methods have been created to do the following:
