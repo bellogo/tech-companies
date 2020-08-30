@@ -36,7 +36,7 @@ Tech companies is a node js app that lists information about tech companies in n
 
 4. Update company: PUT:  https://companies-ng.herokuapp.com/company/:id
 
-5. Delete single companies: DELETE:  https://companies-ng.herokuapp.com/company/:id
+5. Delete a company: DELETE:  https://companies-ng.herokuapp.com/company/:id
 
 ### Prerequisites
 
