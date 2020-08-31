@@ -4,7 +4,7 @@ const dotenv = require('dotenv');
 dotenv.config();
 
 const pool = new Pool({
-  connectionString: process.env.DATABASE_URL
+  connectionString: process.env.DATABASE_URL || process.env.LOCAL_DATABASE_URL
 });
 
 pool.on('connect', () => {
@@ -33,7 +33,7 @@ const createTables = () => {
       console.log(err);
       pool.end();
     });
-}
+};
 
 /**
  * Drop Tables
