@@ -34,6 +34,23 @@ describe('Tasks API', () => {
   
     });
     
+    //test post route
+    describe('POST /companies', () => {
+        it("it should POST a new company", (done) => {
+            chai.request(app)
+            .post('/companies')
+            .send(inject.companyData())
+            .end((err, response) => {
+                response.should.have.status(201);
+                response.body.should.be.a('object');
+                response.body.should.have.property('id');
+                response.body.should.have.property('name', "test data");
+                done();
+            });
+        });
+  
+    });
+    
     //test get by id
     describe('GET /company:id', () => {
         it("it should get a company by id", (done) => {
@@ -62,22 +79,7 @@ describe('Tasks API', () => {
   
     });
 
-    //test post route
-    describe('POST /companies', () => {
-        it("it should POST a new company", (done) => {
-            chai.request(app)
-            .post('/companies')
-            .send(inject.companyData())
-            .end((err, response) => {
-                response.should.have.status(201);
-                response.body.should.be.a('object');
-                response.body.should.have.property('id');
-                response.body.should.have.property('name', "test data");
-                done();
-            });
-        });
-  
-    });
+    
 
     //test put route
     describe('PUT /company/:id', () => {
