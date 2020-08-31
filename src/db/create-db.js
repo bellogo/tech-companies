@@ -1,32 +1,51 @@
-const { Pool } = require('pg');
-const dotenv = require('dotenv');
+import pg from "pg";
+import dotenv from "dotenv";
 
 dotenv.config();
 
-const pool = new Pool({
-  connectionString: process.env.DATABASE_URL || process.env.LOCAL_DATABASE_URL
+let pool = new pg.Pool({
+  connectionString: process.env.DATABASE_URL,
 });
 
-pool.on('connect', () => {
-  console.log('connected to the db');
-});
+// DATABASE_URL=postgres://postgres:1234@127.0.0.1:5432/bela
+if (process.env.NODE_ENV === "development") {
+  pool = new pg.Pool({
+    user: "postgres",
+    host: "localhost",
+    database: "bela",
+    password: process.env.DATABASE_PASSWORD,
+    port: "5432",
+  });
+} else if (process.env.NODE_ENV === "testing") {
+  pool = new pg.Pool({
+    user: "postgres",
+    host: "localhost",
+    database: "companiestest",
+    password: process.env.DATABASE_PASSWORD,
+    port: "5432",
+  });
+}
 
 /**
  * Create Tables
  */
-const createTables = () => {
-  const queryText =
+
+const queryText =
     `CREATE TABLE IF NOT EXISTS
       companies(
-        id BIGSERIAL NOTNULL PRIMARY KEY,
+        id BIGSERIAL PRIMARY KEY,
         name VARCHAR(128) NOT NULL,
         location VARCHAR(128) NOT NULL,
         ceo VARCHAR(128) NOT NULL
       )`;
 
-  pool.query(queryText)
+
+const createTable = () => {
+  pool
+    .query(queryText)
     .then((res) => {
       console.log(res);
+      console.log("Connected to database");
       pool.end();
     })
     .catch((err) => {
@@ -35,30 +54,4 @@ const createTables = () => {
     });
 };
 
-/**
- * Drop Tables
- */
-const dropTables = () => {
-  const queryText = 'DROP TABLE IF EXISTS companies';
-  pool.query(queryText)
-    .then((res) => {
-      console.log(res);
-      pool.end();
-    })
-    .catch((err) => {
-      console.log(err);
-      pool.end();
-    });
-}
-
-pool.on('remove', () => {
-  console.log('client removed');
-  process.exit(0);
-});
-
-module.exports = {
-  createTables,
-  dropTables
-};
-
-require('make-runnable');
+export default createTable;

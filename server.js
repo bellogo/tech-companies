@@ -1,11 +1,13 @@
 import express from 'express';
-// import pool from './db.js';
+import createTable from "./src/db/create-db";
 import Company from './src/controllers/company.js';
 
 
 // import bodyParser from 'body-parser';
 
 const app = express();
+
+createTable();
 
 app.use(express.json());
 
@@ -24,5 +26,6 @@ app.delete('/company/:id', Company.delete);
 const port = process.env.PORT || 3000;
 app.listen(port);
 console.log(`app running on port , ${port}`);
+// console.log(process.env.DATABASE_PASSWORD);
 
 module.exports = app;
