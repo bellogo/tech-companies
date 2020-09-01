@@ -4,7 +4,7 @@
   "description": "my first personal node server",
   "main": "server.js",
   "scripts": {
-    "coverage": "npm run test && jest --coverage && cat ./coverage/lcov.info | coveralls",
+    "coveralls": "nyc report --reporter=text-lcov | coveralls",
     "test": "env NODE_ENV=testing nyc mocha --require @babel/register",
     "start": "babel-node server.js",
     "lint": "eslint src/  --fix",
