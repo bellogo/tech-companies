@@ -14,8 +14,9 @@ before_script:
   - psql -c 'CREATE DATABASE companiestest;' -U postgres
 
 script:
+  # - npm run lint
   - npm run test
-  - npm run lint
+
 after_success:
   - npm run coveralls
 

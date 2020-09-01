@@ -43,9 +43,9 @@ const queryText =
 const createTable = () => {
   pool
     .query(queryText)
-    .then((res) => {
-      console.log(res);
-      console.log("Connected to database");
+    .then(() => {
+      // console.log(res);
+      console.log("Connected to database created table");
       pool.end();
     })
     .catch((err) => {
