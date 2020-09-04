@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "coveralls": "nyc report --reporter=text-lcov | coveralls",
-    "test": "env NODE_ENV=testing nyc mocha --require @babel/register",
+    "test": "env NODE_ENV=testing nyc mocha --require @babel/register --timeout 10000 --recursive --exit || true",
     "start": "babel-node server.js",
     "lint": "eslint src/  --fix",
     "dev": "nodemon --exec babel-node server.js",
