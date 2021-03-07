@@ -58,7 +58,7 @@ The routes featured in this project:
 
 | API routes(url)       | Method   | Description                                         |
 | ---                   | ---      | ---                                                 |
-| /api/         | `GET`   |  Homepage                    |
+| /         | `GET`   |  Homepage                    |
 | /api/companies   | `GET`   | To get all companies                  |
 | /api/company/:id    | `GET` | To get a company                   |
 | /api/company    | `POST` | To add a company                   |

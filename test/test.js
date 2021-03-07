@@ -3,7 +3,6 @@ import chaiHttp from 'chai-http';
 import app from '../server';
 import testData from './testdata';
 
-// Assertion Style
 chai.should();
 
 chai.use(chaiHttp);
@@ -11,7 +10,7 @@ chai.use(chaiHttp);
 describe('Tasks API', () => {
   it('it should welcome user', (done) => {
     chai.request(app)
-      .get('/api')
+      .get('/')
       .end((err, response) => {
         response.should.have.status(200);
         response.body.message.should.be.eq('Welcome to Tech-companies');
@@ -19,7 +18,6 @@ describe('Tasks API', () => {
       });
   });
 
-  // test get all
   it('it should get all companies', (done) => {
     chai.request(app)
       .get('/api/companies')
@@ -30,7 +28,6 @@ describe('Tasks API', () => {
       });
   });
 
-  // test post route
   it('it should POST a new company', (done) => {
     chai.request(app)
       .post('/api/company')
