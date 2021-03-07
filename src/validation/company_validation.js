@@ -16,7 +16,7 @@ const validateCompany = (company) => {
         'string.empty': 'location cannot be an empty field.',
         'string.base': 'location must be a string.',
       }),
-    ceo: Joi.string().required().min(3).max(500)
+    ceo: Joi.string().required()
       .empty()
       .messages({
         'any.required': 'ceo is required.',

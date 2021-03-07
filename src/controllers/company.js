@@ -46,7 +46,6 @@ const Company = {
     const updateOneQuery = 'UPDATE companies SET name=$1,location=$2,ceo=$3 WHERE id=$4 returning *';
 
     pool.query(findOneQuery, [req.params.id])
-      // eslint-disable-next-line consistent-return
       .then((result) => {
         if (!result.rows[0]) {
           return res.status(404).json({ status: 404, error: 'company not found' });
@@ -69,9 +68,7 @@ const Company = {
     pool.query(deleteQuery, [req.params.id])
       .then((result) => {
         if (!result.rows[0]) {
-          return res.status(404).send({
-            message: 'company not found',
-          });
+          return res.status(404).json({ status: 404, error: 'company not found' });
         }
         return res.status(200).json({ status: 200, message: 'Company has been deleted.' });
       })
