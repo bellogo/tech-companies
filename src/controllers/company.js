@@ -1,5 +1,5 @@
 import pool from '../db/db';
-import validateCompany from '../validation/company_validation';
+import { validatePut, validateCompany } from '../validation/company_validation';
 
 const Company = {
   homePage(req, res) {
@@ -42,6 +42,9 @@ const Company = {
   },
 
   update(req, res) {
+    const { error } = validatePut(req.body);
+    if (error) return res.status(400).json({ status: 400, error: error.message });
+
     const findOneQuery = 'SELECT * FROM companies WHERE id=$1';
     const updateOneQuery = 'UPDATE companies SET name=$1,location=$2,ceo=$3 WHERE id=$4 returning *';
 
